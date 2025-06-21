@@ -32,35 +32,20 @@ public record User(
         private String password;
         private LocalDateTime createdAt;
 
+        public Builder  Id(long id) {this.id = id;return this;}
 
-        public Builder  Id(long id) {
-            this.id = id;
-            return this;
-        }
+        public Builder  userId(String userId) {this.userId = userId;return this;}
 
-        public Builder  userId(String userId) {
-            this.userId = userId;
-            return this;
-        }
+        public Builder  username(String username) {this.username = username;return this;}
 
-        public Builder  username(String username) {
-            this.username = username;
-            return this;
-        }
+        public Builder  password(String password) {this.password = password;return this;}
 
-        public Builder  password(String password) {
-            this.password = password;
-            return this;
-        }
-
-        public Builder createdAt(LocalDateTime createdAt) {
-            this.createdAt = createdAt;
-            return this;
-        }
+        public Builder createdAt(LocalDateTime createdAt) {this.createdAt = createdAt;return this;}
 
         public User build(){
             return new User(this.id, this.userId, this.username, this.password, this.createdAt);
         }
+
         public Builder from(User existingUser) {
             return new Builder()
                     .Id(existingUser.id())
