@@ -5,24 +5,56 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Table(name = "users")
-public record User(
-        @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id,
-        String userId,
-        String username,
-        String password,
-        @CreationTimestamp LocalDateTime createdAt
-) {
+public class User{
 
-    public User {
-        Objects.requireNonNull(id, "id must not be null");
-        Objects.requireNonNull(userId, "userId must not be null");
-        Objects.requireNonNull(username, "username must not be null");
-        Objects.requireNonNull(password, "password must not be null");
-        Objects.requireNonNull(createdAt, "createdAt must not be null");
+//    public User {
+//        Objects.requireNonNull(id, "id must not be null");
+//        Objects.requireNonNull(userId, "userId must not be null");
+//        Objects.requireNonNull(username, "username must not be null");
+//        Objects.requireNonNull(password, "password must not be null");
+//        Objects.requireNonNull(createdAt, "createdAt must not be null");
+//    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String userId;
+    private String username;
+    private String password;
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    public User() {}
+    public User(Long id, String userId, String username, String password, LocalDateTime createdAt) {
+        this.id = id;
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.createdAt = createdAt;
     }
+
+    public void setId(Long id) { this.id = id; }
+
+    public void setUserId(String userId) { this.userId = userId; }
+
+    public void setUsername(String username) { this.username = username; }
+
+    public void setPassword(String password) { this.password = password; }
+
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+
+    public Long getId() { return id; }
+
+    public String getUserId() { return userId; }
+
+    public String getUsername() { return username; }
+
+    public String getPassword() { return password; }
+
+    public LocalDateTime getCreatedAt() { return createdAt; }
 
     public static class Builder {
 
@@ -48,13 +80,11 @@ public record User(
 
         public Builder from(User existingUser) {
             return new Builder()
-                    .Id(existingUser.id())
-                    .userId(existingUser.userId())
-                    .username(existingUser.username())
-                    .password(existingUser.password())
-                    .createdAt(existingUser.createdAt());
+                    .Id(existingUser.getId())
+                    .userId(existingUser.getUserId())
+                    .username(existingUser.getUsername())
+                    .password(existingUser.getPassword())
+                    .createdAt(existingUser.getCreatedAt());
         }
     }
-
-
 }
