@@ -20,20 +20,30 @@ public class User{
 //    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "userID")
     private String userId;
+
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "password")
     private String password;
+
     @CreationTimestamp
-    private LocalDateTime createdAt;
+    @Column(name = "created_at")
+    private LocalDateTime created_at;
 
     public User() {}
-    public User(Long id, String userId, String username, String password, LocalDateTime createdAt) {
+
+    public User(Long id, String userId, String username, String password, LocalDateTime created_at) {
         this.id = id;
         this.userId = userId;
         this.username = username;
         this.password = password;
-        this.createdAt = createdAt;
+        this.created_at = created_at;
     }
 
     public void setId(Long id) { this.id = id; }
@@ -44,7 +54,7 @@ public class User{
 
     public void setPassword(String password) { this.password = password; }
 
-    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public void setCreatedAt(LocalDateTime created_at) { this.created_at = created_at; }
 
     public Long getId() { return id; }
 
@@ -54,7 +64,7 @@ public class User{
 
     public String getPassword() { return password; }
 
-    public LocalDateTime getCreatedAt() { return createdAt; }
+    public LocalDateTime getCreatedAt() { return created_at; }
 
     public static class Builder {
 
@@ -62,7 +72,7 @@ public class User{
         private String userId;
         private String username;
         private String password;
-        private LocalDateTime createdAt;
+        private LocalDateTime created_at;
 
         public Builder  Id(long id) {this.id = id;return this;}
 
@@ -72,10 +82,10 @@ public class User{
 
         public Builder  password(String password) {this.password = password;return this;}
 
-        public Builder createdAt(LocalDateTime createdAt) {this.createdAt = createdAt;return this;}
+        public Builder createdAt(LocalDateTime created_at) {this.created_at = created_at;return this;}
 
         public User build(){
-            return new User(this.id, this.userId, this.username, this.password, this.createdAt);
+            return new User(this.id, this.userId, this.username, this.password, this.created_at);
         }
 
         public Builder from(User existingUser) {

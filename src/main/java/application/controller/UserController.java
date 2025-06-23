@@ -20,10 +20,10 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-//    @GetMapping("/{userid}")
-//    public Optional<User> getUserId(Long id){
-//        return userService.getByUserId(id);
-//    }
+    @GetMapping("/id/{userid}")
+    public Optional<User> getUserById(@PathVariable Long userid){
+        return userService.getByUserId(userid);
+    }
 
     @PostMapping("/adduser")
     public User addUser(@RequestBody User user) {

@@ -3,6 +3,6 @@ CREATE TABLE IF NOT EXISTS users (
     `userID` VARCHAR(36) UNIQUE NOT NULL,
     `username` VARCHAR(36) NOT NULL,
     `password` VARCHAR(36) NOT NULL,
-    `createdAt` DATETIME,
+    `created_at` DATETIME,
     PRIMARY KEY (`id`)
 ) AUTO_INCREMENT=1;
