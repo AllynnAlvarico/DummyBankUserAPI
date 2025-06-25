@@ -3,6 +3,7 @@ package application.controller;
 import application.model.User;
 import application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,4 +28,16 @@ public class UserController {
 
     @PostMapping("/adduser")
     public User addUser(@RequestBody User user) {return userService.addUser(user); }
+
+    @DeleteMapping("/id/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        Optional<User> user = userService.getByUserId(id);
+        if (user.isPresent()) {
+            userService.removeUser(id);
+            return ResponseEntity.noContent().build(); // 204
+        } else {
+            return ResponseEntity.notFound().build(); // 404
+        }
+    }
+
 }

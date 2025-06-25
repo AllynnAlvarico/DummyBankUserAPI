@@ -14,7 +14,9 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<User> getAllUsers() {return userRepository.findAll();}
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
 
     public Optional<User> getByUserId(Long id) {
         return userRepository.findById(id);
@@ -23,5 +25,9 @@ public class UserService {
     public User addUser(User user) {
         user.setUserId(new UUIDGenerator().generateUserID(userRepository));
         return userRepository.save(user);
+    }
+
+    public void removeUser(Long id) {
+        userRepository.deleteById(id);
     }
 }

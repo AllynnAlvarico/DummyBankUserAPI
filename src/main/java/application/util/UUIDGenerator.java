@@ -9,7 +9,6 @@ import java.util.*;
 public class UUIDGenerator {
 
     public String generateUserID(UserRepository userRepository) {
-
         List<User> listOfUsers = userRepository.findAll();
         Set<String> existingUserIds = new HashSet<>(); /** using HashSet makes checking for duplicates much faster */
         for (User user : listOfUsers) {

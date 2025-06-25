@@ -74,6 +74,8 @@ public class User{
         private String password;
         private LocalDateTime created_at;
 
+        public Builder() {}
+
         public Builder  Id(long id) {this.id = id;return this;}
 
         public Builder  userId(String userId) {this.userId = userId;return this;}
