@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @Service
 public class UserService {
+
     @Autowired
     private UserRepository userRepository;
 
@@ -23,7 +24,9 @@ public class UserService {
     }
 
     public User addUser(User user) {
+        String urlAvatar = "https://robohash.org/" + user.getUserId();
         user.setUserId(new UUIDGenerator().generateUserID(userRepository));
+        user.setAvatar(urlAvatar);
         return userRepository.save(user);
     }
 

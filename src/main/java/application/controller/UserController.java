@@ -21,9 +21,9 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/id/{userid}")
-    public Optional<User> getUserById(@PathVariable Long userid){
-        return userService.getByUserId(userid);
+    @GetMapping("/id/{id}")
+    public Optional<User> getUserById(@PathVariable Long id){
+        return userService.getByUserId(id);
     }
 
     @PostMapping("/adduser")
